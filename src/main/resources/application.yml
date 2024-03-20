@@ -1,0 +1,29 @@
+server:
+  port: 8082
+
+#spring.jpa.show-sql: true
+spring:
+  application:
+    name: message_ms
+  jpa:
+    defer-datasource-initialization: true
+    show-sql: true
+    hibernate:
+      dialect: org.hibernate.dialect.MySQL8Dialect
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/mensajeria
+#    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/db_example
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  sql:
+    init:
+      mode: always
+      data-locations: classpath:message.sql
+
+info:
+  app:
+    name: ${spring.application.name}
+    version: 1.0.0
+    description: Message Microservice
